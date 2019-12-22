@@ -8,6 +8,8 @@ interface IProps<TModel>{
 
 export default abstract class ShuttlerComponent<TModel> extends React.PureComponent<IProps<TModel>>{
 
+    
+
 
     unsubscribe: () => void = () => { throw new Error("Unsubscribe callback is not set");}
 
@@ -22,10 +24,12 @@ export default abstract class ShuttlerComponent<TModel> extends React.PureCompon
         this.props.shuttleStack.push(model);
     }
 
+    
+
     componentDidMount(){
-        this.unsubscribe = this.props.shuttleStack.subscribe(() => {
-            this.modelWasPushed();
-            this.forceUpdate();
+      this.unsubscribe = this.props.shuttleStack.subscribe(() => {
+          this.modelWasPushed();
+          this.forceUpdate();
         });
     }
 
