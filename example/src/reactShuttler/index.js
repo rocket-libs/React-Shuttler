@@ -2,8 +2,9 @@
 import React from 'react';
 
 class ShuttleStack {
-    constructor() {
+    constructor(initialModel) {
         this.listners = [];
+        this.model = initialModel;
     }
     subscribe(fn) {
         this.listners.push(fn);
@@ -11,11 +12,8 @@ class ShuttleStack {
         return unsubscribe;
     }
     push(model) {
-        this._model = model;
+        this.model = model;
         this.listners.map(singleFn => singleFn(model));
-    }
-    get model() {
-        return this._model;
     }
 }
 

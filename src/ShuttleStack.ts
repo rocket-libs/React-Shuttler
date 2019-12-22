@@ -1,5 +1,10 @@
 export default class ShuttleStack<TModel>{
-    _model: TModel | undefined;
+    model: TModel;
+
+    constructor(initialModel: TModel){
+      this.push(initialModel);
+    }
+
     listners: {(model: TModel): void; } [] = [];
 
     subscribe( fn: (model: TModel) => void) : () => void {
@@ -9,11 +14,7 @@ export default class ShuttleStack<TModel>{
     }
 
     push(model: TModel){
-        this._model = model;
+        this.model = model;
         this.listners.map(singleFn => singleFn(model));
-    }
-
-    get model(){
-        return this._model;
     }
 }
