@@ -6,4 +6,5 @@ export default class ShuttleStack<TModel> {
     }[];
     subscribe(fn: (model: TModel) => void): () => void;
     push(model: TModel): void;
+    private differentObject;
 }

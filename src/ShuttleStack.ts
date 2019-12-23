@@ -14,7 +14,14 @@ export default class ShuttleStack<TModel>{
     }
 
     push(model: TModel){
-        this.model = model;
-        this.listners.map(singleFn => singleFn(model));
+        const modelChanged = this.differentObject(this.model,model);
+        if(modelChanged){
+          this.model = model;
+          this.listners.map(singleFn => singleFn(model));
+        }
+    }
+
+    private differentObject(oldModel: TModel, newModel: TModel) {
+      return JSON.stringify(oldModel) !== JSON.stringify(newModel);
     }
 }
