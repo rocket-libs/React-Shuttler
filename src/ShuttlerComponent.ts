@@ -5,15 +5,11 @@ interface IProps<TModel>{
     shuttleStack: ShuttleStack<TModel>
 }
 
-interface IState{
-    refreshTrigger: number
-}
 
-export default abstract class ShuttlerComponent<TModel> extends React.PureComponent<IProps<TModel>,IState>{
+
+export default abstract class ShuttlerComponent<TModel> extends React.PureComponent<IProps<TModel>>{
     
-    state={
-        refreshTrigger: 0
-    };
+    
     
 
     unsubscribe: () => void = () => { throw new Error("Unsubscribe callback is not set");}
