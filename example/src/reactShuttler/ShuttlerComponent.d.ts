@@ -3,13 +3,7 @@ import ShuttleStack from '../Shuttler/ShuttleStack';
 interface IProps<TModel> {
     shuttleStack: ShuttleStack<TModel>;
 }
-interface IState {
-    refreshTrigger: number;
-}
-export default abstract class ShuttlerComponent<TModel> extends React.PureComponent<IProps<TModel>, IState> {
-    state: {
-        refreshTrigger: number;
-    };
+export default abstract class ShuttlerComponent<TModel> extends React.PureComponent<IProps<TModel>> {
     unsubscribe: () => void;
     abstract modelWasPushed(): void;
     pushDelta(model: TModel | any): void;
